@@ -88,6 +88,17 @@
         "jestConfig": "apps/showcase-ng/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "openapi": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "rimraf apps/showcase-ng/src/app/generated",
+          "openapi-generator-cli generate -i petstore.yaml -g typescript-angular -o apps/showcase-ng/src/app/generated",
+          "eslint apps/showcase-ng/src/app/generated --fix"
+        ],
+        "parallel": false
+      }
     }
   },
   "tags": []
