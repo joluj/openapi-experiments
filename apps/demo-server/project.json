@@ -13,7 +13,17 @@
         "outputPath": "dist/apps/demo-server",
         "main": "apps/demo-server/src/main.ts",
         "tsConfig": "apps/demo-server/tsconfig.app.json",
-        "assets": ["apps/demo-server/src/assets"]
+        "assets": ["apps/demo-server/src/assets"],
+        "transformers": [
+          {
+            "name": "@nestjs/swagger/plugin",
+            "options": {
+              "introspectComments": true,
+              "controllerKeyOfComment": "summary",
+              "dtoFileNameSuffix": [".dto.ts"]
+            }
+          }
+        ]
       },
       "configurations": {
         "production": {
