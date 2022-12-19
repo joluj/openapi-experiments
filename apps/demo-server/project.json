@@ -54,6 +54,17 @@
         "jestConfig": "apps/demo-server/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "openapi": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "rimraf apps/demo-server/src/app/types",
+          "openapi-generator-cli generate -i petstore.yaml -g typescript -o apps/demo-server/src/app/types --global-property models",
+          "eslint apps/demo-server/src/app/types --fix"
+        ],
+        "parallel": false
+      }
     }
   },
   "tags": []

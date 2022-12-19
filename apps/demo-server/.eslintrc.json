@@ -1,18 +1,19 @@
 {
   "extends": ["../../.eslintrc.json"],
+  "plugins": ["eslint-plugin-unused-imports"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
-    },
-    {
       "files": ["*.ts", "*.tsx"],
-      "rules": {}
+      "rules": {
+        "unused-imports/no-unused-imports": "error"
+      }
     },
     {
-      "files": ["*.js", "*.jsx"],
-      "rules": {}
+      "files": ["src/app/types/**/*.ts"],
+      "rules": {
+        "@typescript-eslint/no-empty-function": "off"
+      }
     }
   ]
 }

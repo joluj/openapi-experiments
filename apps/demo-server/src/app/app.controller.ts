@@ -1,13 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
 
 import { AppService } from './app.service';
+import {Pet} from "./types/models/Pet";
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('example')
-  getData() {
-    return this.appService.getData();
+  getData(): Pet {
+    return this.appService.getCat();
   }
 }
+
