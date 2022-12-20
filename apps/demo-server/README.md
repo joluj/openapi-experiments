@@ -2,9 +2,9 @@
 
 This is an example configuration for a simple demo server with generated types.
 
-## Setup
+## Load OpenApi Models
 
-Create models with `nx run demo-server:openapi`.
+You can load an existing OpenApi model with `nx run demo-server:openapi:load`. This can be downloaded [here](https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml). Only models are generated.
 
 <u>Explanation</u>:
 ```shell
@@ -22,3 +22,7 @@ eslint apps/demo-server/src/app/types --fix
 
 <u>Why fix linter errors?</u>:
 The generator tries to import `import { HttpFile } from '../http/http';`, but this file does not exist. We can solve this by either creating a dummy file or remove the unused import by fixing all eslint problems. All existing eslint problems like "Unexpected empty constructor" must be disabled for this directory.
+
+## Create OpenApi Models
+
+You can create an OpenApi definition for this server by running `nx run demo-server:openapi:generate`. The setup also supports watch mode (i.e. always build models when the server configuration changes) with `nx run demo-server:serve:openapi`.

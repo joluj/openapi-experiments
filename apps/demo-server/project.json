@@ -36,6 +36,10 @@
               "with": "apps/demo-server/src/environments/environment.prod.ts"
             }
           ]
+        },
+        "openapi": {
+          "main": "apps/demo-server/src/openapi.main.ts",
+          "outputPath": "dist/openapi/apps/demo-server"
         }
       }
     },
@@ -47,6 +51,9 @@
       "configurations": {
         "production": {
           "buildTarget": "demo-server:build:production"
+        },
+        "openapi": {
+          "buildTarget": "demo-server:build:openapi"
         }
       }
     },
@@ -68,12 +75,23 @@
     "openapi": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "rimraf apps/demo-server/src/app/types",
-          "openapi-generator-cli generate -i petstore.yaml -g typescript -o apps/demo-server/src/app/types --global-property models",
-          "eslint apps/demo-server/src/app/types --fix"
-        ],
         "parallel": false
+      },
+      "defaultConfiguration": "load",
+      "configurations": {
+        "load": {
+          "commands": [
+            "rimraf apps/demo-server/src/app/types",
+            "openapi-generator-cli generate -i petstore.yaml -g typescript -o apps/demo-server/src/app/types --global-property models",
+            "eslint apps/demo-server/src/app/types --fix"
+          ]
+        },
+        "generate": {
+          "commands": [
+            "nx run demo-server:build:openapi",
+            "node dist/openapi/apps/demo-server/main"
+          ]
+        }
       }
     }
   },
