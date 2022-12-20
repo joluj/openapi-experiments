@@ -8,6 +8,7 @@ async function bootstrap() {
   const app = await createApp();
   const openApiSpec = createOpenApiConfig(app);
   const port = process.env.PORT || 3333;
+  app.enableCors({ origin: 'http://localhost:4978' });
 
   SwaggerModule.setup('api', app, openApiSpec, { customSiteTitle: 'Cats API' });
   await app.listen(port);

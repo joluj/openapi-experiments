@@ -1,1 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono&display=swap');
+
+// Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-family: 'Chivo Mono', monospace;
+
+  --primary-color: #2a8393;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+html {
+  //noinspection CssUnknownProperty
+  color-scheme: light dark;
+}
+
+h1 {
+  font-size: 4em;
+}
+h2 {
+  font-size: 2em;
+}
+
+input {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background: transparent;
+
+  border: none;
+  border-bottom: 2px gray solid;
+
+  &:focus {
+    outline: none;
+    border-bottom-color: var(--primary-color);
+  }
+}
+
+button {
+  background: transparent;
+  border: 2px var(--primary-color) solid;
+  padding: 0.5em;
+
+  &:hover {
+    cursor: pointer;
+    background: var(--primary-color);
+  }
+}
+
+li {
+  list-style: none;
+
+  &:before {
+    content: '-';
+    color: var(--primary-color);
+    width: 0.5rem;
+    margin-left: 0.5rem;
+  }
+}

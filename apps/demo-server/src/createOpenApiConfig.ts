@@ -11,5 +11,7 @@ export const createOpenApiConfig = (app: INestApplication) => {
     .addServer('https://cats.app', 'production')
     .build();
 
-  return SwaggerModule.createDocument(app, config);
+  return SwaggerModule.createDocument(app, config, {
+    operationIdFactory: (_, operationKey) => operationKey,
+  });
 };

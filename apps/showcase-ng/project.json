@@ -93,9 +93,9 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "rimraf apps/showcase-ng/src/app/generated",
+          "rimraf apps/showcase-ng/src/app/generated apps/showcase-ng/src/app/cats-service",
           "openapi-generator-cli generate -i petstore.yaml -g typescript-angular -o apps/showcase-ng/src/app/generated",
-          "eslint apps/showcase-ng/src/app/generated --fix"
+          "openapi-generator-cli generate -i dist/openapi/demo-server.json -g typescript-angular -o apps/showcase-ng/src/app/cats-service"
         ],
         "parallel": false
       }

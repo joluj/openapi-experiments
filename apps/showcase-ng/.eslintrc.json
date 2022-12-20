@@ -1,6 +1,6 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*", "src/app/generated"],
+  "ignorePatterns": ["!**/*", "src/app/generated", "src/app/cats-service"],
   "overrides": [
     {
       "files": ["*.ts"],

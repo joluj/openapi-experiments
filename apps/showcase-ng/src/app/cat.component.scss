@@ -1,0 +1,22 @@
+main {
+  display: flex;
+  justify-content: space-around;
+
+  .divide {
+    width: 2px;
+
+    background: var(--primary-color);
+  }
+
+  > *:not(.divide) {
+    width: 40%;
+  }
+}
+
+.cat-images {
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}

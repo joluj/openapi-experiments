@@ -21,7 +21,7 @@ export class AppController {
    * Returns all cats
    */
   @Get()
-  getAll(): CatDto[] {
+  getAllCats(): CatDto[] {
     return this.appService.all();
   }
 
@@ -29,7 +29,7 @@ export class AppController {
    * Insert a cat
    */
   @Post()
-  add(@Body() cat: InsertCatDto): CatDto {
+  insertCat(@Body() cat: InsertCatDto): CatDto {
     return this.appService.insert(cat);
   }
 
@@ -38,8 +38,8 @@ export class AppController {
    */
   @Get(':id')
   @ApiNotFoundResponse({ description: 'If cat not found' })
-  get(@Param('id') id: string): CatDto {
-    const cat = this.appService.get(id);
+  getCat(@Param('id') id: number): CatDto {
+    const cat = this.appService.get(+id);
     if (cat) return cat;
 
     throw new NotFoundException('Cat not found');
@@ -50,7 +50,7 @@ export class AppController {
    * @param id
    */
   @Delete(':id')
-  delete(@Param('id') id: string) {
-    return this.appService.delete(id);
+  deleteCat(@Param('id') id: number) {
+    return this.appService.delete(+id);
   }
 }

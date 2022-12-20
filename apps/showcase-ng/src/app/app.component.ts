@@ -1,17 +1,11 @@
 import { Component } from '@angular/core';
-import { AsyncPipe, CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { PetService } from './generated';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, HttpClientModule, AsyncPipe],
+  imports: [RouterOutlet],
   selector: 'openapi-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  data$ = this.petService.findPetsByStatus(['available']);
-
-  constructor(private readonly petService: PetService) {}
-}
+export class AppComponent {}

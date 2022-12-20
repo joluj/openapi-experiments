@@ -1,0 +1,31 @@
+<h1>Cats</h1>
+
+<form (submit)="addCat(catName.value); $event.preventDefault()">
+  <input #catName required />
+
+  <button type="submit">Add Cat</button>
+</form>
+
+<main>
+  <div>
+    <ul>
+      <li *ngFor="let cat of cats$ | async" (click)="selectCat(cat)">
+        {{ cat.name }}
+      </li>
+    </ul>
+
+    <div *ngIf="((cats$ | async) ?? []).length <= 0">No cats found :(</div>
+  </div>
+
+  <div class="divide"></div>
+
+  <div>
+    <ng-container *ngIf="selectedCat$ | async; let cat">
+      <h2>{{ cat.name }}</h2>
+
+      <div class="cat-images">
+        <img *ngFor="let image of cat.photoUrls" [src]="image" alt="cat" />
+      </div>
+    </ng-container>
+  </div>
+</main>
